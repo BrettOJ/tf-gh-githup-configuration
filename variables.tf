@@ -1,3 +1,9 @@
+variable "github_token" {
+  description = "The GitHub token to use for authentication."
+  type        = string
+  default     = null
+  
+}
 variable "name" {
   description = "The name of the repository."
   type        = string
