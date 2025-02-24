@@ -1,4 +1,16 @@
 terraform {
+  backend "azurerm" {
+    key                  = "terraform.tfstate"
+    resource_group_name  = "boj-test-rg"
+    storage_account_name = "bojtestst"
+    container_name       = "terraformstate"
+    tenant_id            = "f3c9952d-3ea5-4539-bd9a-7e1093f8a1b6" #konjur tenant id
+    subscription_id      = "95328200-66a3-438f-9641-aeeb101e5e37"
+    use_msi              = false
+  }
+}
+
+terraform {
   required_version = ">= 1.9.7"
 }
 terraform {
@@ -20,7 +32,7 @@ provider "github" {
  
 
 provider "azurerm" {
-  storage_use_azuread = false
+  storage_use_azuread = true
   use_msi             = false
   tenant_id           = "f3c9952d-3ea5-4539-bd9a-7e1093f8a1b6" #konjur tenant id
   subscription_id     = "95328200-66a3-438f-9641-aeeb101e5e37"
